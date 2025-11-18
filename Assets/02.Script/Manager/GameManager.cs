@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     public GameState globalGameState { get; private set; }
 
-    [SerializeField] private CoinSpawn CoinSpawn;
+    //[SerializeField] private CoinSpawn CoinSpawn;
 
 
     private void Awake()
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SetState(GameState.GameReady);
-        CoinSpawn.spawnStart();
+        //CoinSpawn.spawnStart();
     }
 
     public void SetState(GameState newstate)
@@ -58,6 +58,4 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
-   
-
 }
