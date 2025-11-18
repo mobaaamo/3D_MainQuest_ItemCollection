@@ -1,5 +1,3 @@
-using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CoinSpawn : MonoBehaviour
@@ -15,20 +13,20 @@ public class CoinSpawn : MonoBehaviour
         coinPool = new ObjectPool<Coin>(coinPrefab, coinCount, transform);
     }
 
-    private void Start()
+    public void spawnStart()
     {
-        for(int i =0; i< coinCount; i++)
+        for (int i = 0; i < coinCount; i++)
         {
-            SpawnRandomCoin();
+            SpawnRandom();
         }
     }
-    void SpawnRandomCoin()
+    void SpawnRandom()
     {
         Coin coin = coinPool.Dequeue();
         coin.SetPool(coinPool);
 
-        float randX = Random.Range(-50, 51);
-        float randZ = Random.Range(-50, 51);
+        float randX = Random.Range(-10, 11);
+        float randZ = Random.Range(-10, 11);
 
         Vector3 rayStart = new Vector3(randX, 20f, randZ); //랜덤한 위치 생성 20f에서 레이케스트 쏨
 
@@ -38,6 +36,9 @@ public class CoinSpawn : MonoBehaviour
         {
             coin.transform.position = hit.point + Vector3.up * 0.3f;  //Vector3.up * 0.3 다른 오브젝트 안에 안들어가게 살짝 띄움
             coin.gameObject.SetActive(true);
+
+            CoinCounter.instance.RegisterCoin();
+
         }
 
     }
