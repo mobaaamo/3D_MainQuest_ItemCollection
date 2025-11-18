@@ -20,15 +20,12 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>(); 
         animator = GetComponent<Animator>();
     }
-
-
     void Update()
     {
 
         Move();
         Jump();
     }
-
 
     private void Move()
     {
