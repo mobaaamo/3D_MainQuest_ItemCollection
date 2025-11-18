@@ -12,7 +12,10 @@ public class CoinSpawn : MonoBehaviour
     {
         coinPool = new ObjectPool<Coin>(coinPrefab, coinCount, transform);
     }
-
+    private void Start()
+    {
+        spawnStart();
+    }
     public void spawnStart()
     {
         for (int i = 0; i < coinCount; i++)
@@ -25,8 +28,8 @@ public class CoinSpawn : MonoBehaviour
         Coin coin = coinPool.Dequeue();
         coin.SetPool(coinPool);
 
-        float randX = Random.Range(-10, 11);
-        float randZ = Random.Range(-10, 11);
+        float randX = Random.Range(-20, 21);
+        float randZ = Random.Range(-20, 21);
 
         Vector3 rayStart = new Vector3(randX, 20f, randZ); //랜덤한 위치 생성 20f에서 레이케스트 쏨
 
